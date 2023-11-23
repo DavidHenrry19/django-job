@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Agregar empresa o negocio</h1>
+                    <p>El plan de negocios se basa en una amplia gama de conocimientos de diferentes disciplinas empresariales<br>.
+                        Los negocios se basan en una amplia gama de negocios diferentes.</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li>Agregar negocio o empresa</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Start Add Resume Section -->
+<section class="add-resume section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-12">
+                <div class="add-resume-inner box">
+                    <div class="post-header align-items-center justify-content-center">
+                        <h3>Informacion basica</h3>
+                    </div>
+                    <form class="form-ad" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Nombre de la empresa u organizacion</label>
+                                    {% render_field form.name class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Fecha establecida</label>
+                                    {% render_field form.est_date class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Provincia</label>
+                                    {% render_field form.city class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Distrito</label>
+                                    {% render_field form.state class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12 pt-4">
+                                <div class="form-group">
+                                    <div class="button-group">
+                                        <div class="action-buttons">
+                                            <div class="upload-button button">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Add Resume Section -->
+
+{% endblock content %}

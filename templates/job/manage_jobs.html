@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Gestionar trabajo</h1>
+                    <p>El plan de negocios se basa en una amplia gama de conocimientos de diferentes disciplinas empresariales<br>.
+                        Los negocios se basan en una amplia gama de negocios diferentes.</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="">Inicio</a></li>
+                    <li>Gestionar trabajo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Main Content Start -->
+<div class="manage-jobs section">
+    <div class="container">
+        <div class="alerts-inner">
+            <div class="row">
+                <!-- Start Main Content -->
+                <div class="col-lg-3 col-6">
+                    <div class="dashbord-sidebar">
+                        <ul>
+                            <li class="heading">Gestionar cuenta</li>
+                            <li><a href=""><i class="lni lni-clipboard"></i> Mi CV</a></li>
+                            <li><a href=""><i class="lni lni-alarm"></i> Notificaciones <span
+                                        class="notifi">5</span></a></li>
+                            <li><a href=""><i class="lni lni-envelope"></i> Gestionar aplicaciones</a></li>
+                            <li><a class="active" href=""><i class="lni lni-briefcase"></i> Gestionar trabajos</a></li>
+                            <li><a href=""><i class="lni lni-lock"></i> Cambiar password</a></li>
+                            <li><a href=""><i class="lni lni-upload"></i> Cerrar sesion</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Main Content -->
+                <div class="col-lg-9 col-12">
+                    <h5 class="card-title mb-3">Gestionar trabajos</h5>
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Titulo del trabajo</th>
+                                <th scope="col">Ubicacion</th>
+                                <th scope="col">Horas de trabajo</th>
+                                <th scope="col">No. de aplicantes</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for job in jobs %}
+                            <tr>
+                                <td>{{job.title}}</td>
+                                <td>{{job.city}}, {{job.state}}</td>
+                                <td>{{job.salary}}</td>
+                                <td>{{job.applyjob_set.all.count}} <a href="{% url 'all-applicants' job.pk %}"><small>Ver todos</small></a></td>
+                                {% if job.is_available %}
+                                <td><span class="badge bg-success">Activo</span></td>
+                                {% else %}
+                                <td><span class="badge bg-warning">No Activo</span></td>
+                                {% endif %}
+                                <td><a href="{% url 'update-job' job.pk %}"><small>Subir</small></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    
+                    <!-- Pagination -->
+                    <div class="pagination left pagination-md-center">
+                        <ul class="pagination-list">
+                            <li><a href="#"><i class="lni lni-arrow-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#"><i class="lni lni-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- End Pagination -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

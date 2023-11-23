@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Publicar un trabajo</h1>
+                    <p>El plan de negocios se basa en una amplia gama de conocimientos de diferentes disciplinas empresariales<br>.
+                        Los negocios se basan en una amplia gama de negocios diferentes.</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="">Inicio</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li>Publicar trabajo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<section class="job-post section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-12">
+                <div class="job-information">
+                    <h3 class="title">Informacion del trabajo</h3>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Titulo</label>
+                                    {% render_field form.title class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Provincia</label>
+                                    {% render_field form.city class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Distrito</label>
+                        {% render_field form.state class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Industria</label>
+                        {% render_field form.industry class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Horas de trabajo</label>
+                        {% render_field form.salary class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Tipo de trabajo</label>
+                        {% render_field form.job_type class="form-control" %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Descripcion del trabajo</label>
+                        {% render_field form.requirements|attr:"rows:2" class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Requerimientos</label>
+                        {% render_field form.ideal_candidate|attr:"rows:2" class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="mb-10">
+                                <label for="exampleInputEmail1" class="form-label">Este trabajo esta activo? </label>
+                                {% render_field form.is_available class="form-check-input" %}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>   
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

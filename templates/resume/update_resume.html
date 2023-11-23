@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Agregar CV</h1>
+                    <p>El plan de negocios se basa en una amplia gama de conocimientos de diferentes disciplinas empresariales. <br>
+                        Los negocios se basan en una amplia gama de diferentes .</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li>Agregar CV</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Start Add Resume Section -->
+<section class="add-resume section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-12">
+                <div class="add-resume-inner box">
+                    <div class="post-header align-items-center justify-content-center">
+                        <h3>Informacion basica</h3>
+                    </div>
+                    <form class="form-ad" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Nombres</label>
+                                    {% render_field form.first_name class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Apellito</label>
+                                    {% render_field form.surname class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Distrito (ubicacion actual) </label>
+                                    {% render_field form.location class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Grado academico</label>
+                                    {% render_field form.job_title class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label">Subir CV</label>
+                                    {% render_field form.upload_resume class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12 pt-4">
+                                <div class="form-group">
+                                    <div class="button-group">
+                                        <div class="action-buttons">
+                                            <div class="upload-button button">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Add Resume Section -->
+
+{% endblock content %}

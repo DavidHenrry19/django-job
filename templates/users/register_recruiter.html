@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+{% load static %}
+<form class="p-4 p-md-5 border rounded-3 bg-light" method="POST">
+    {% csrf_token %}
+    <a class="" href="{% url 'home' %}">
+        <img class="logo1" src="{% static '/images/logo/agencia-logo-u.png' %}" alt="Logo" width="170"/>
+    </a>
+    <br>
+    <br>
+    <div class="form-floating mb-3">
+        {% render_field form.email class="form-control" %}
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+        {% render_field form.password1 class="form-control" %}
+        <label for="floatingInput">Enter Password</label>
+    </div>
+    <div class="form-floating mb-3">
+        {% render_field form.password2 class="form-control" %}
+        <label for="floatingInput">Confirm Password</label>
+    </div>
+    
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+    <hr class="my-4">
+    <!-- <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small> -->
+    <small class="text-muted">Already have an account? <a href="{% url 'login' %}">Inicar sesion</a></small>
+</form>
+
+{% endblock content %}

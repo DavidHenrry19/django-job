@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Hero Area -->
+
+
+{% if request.user.is_applicant %}
+{% if not request.user.has_resume %}
+<div class="alert alert-danger" role="alert">
+    <b>Estás viendo esto porque no has creado ningún currículum. Crea uno ahora <a href="{% url 'update-resume' %}">aqui</a></b>
+</div>
+{% endif %}
+<section class="hero-area">
+    <!-- Single Slider -->
+    <div class="hero-inner">
+        <div class="container">
+            <div class="row"> 
+
+                <div class="col-lg-8 col-12">
+                    <div class="inner-content">
+                        <div class="hero-text">
+                            <h1 class="wow fadeInUp" data-wow-delay=".3s">Bienvenido a AGENCIA U <br>busca un empleo para hacer una vida mejor
+                            </h1>
+                            <p class="wow fadeInUp" data-wow-delay=".5s">Crear un hermoso sitio web de empleo no es
+                                fácil <br> siempre. Para hacerle la vida más fácil, <br> presentamos la plantilla Jobcamp.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 co-12">
+                    <div class="hero-video-head wow fadeInRight" data-wow-delay=".5s">
+                        <div class="video-inner">
+                            <img src="{% static '/images/hero/hero-image.png' %}" alt="#">
+                            <a href="" class="glightbox hero-video"><i
+                                    class="lni lni-play"></i></a>
+                            <!-- Video Animation -->
+                            <div class="promo-video">
+                                <div class="waves-block">
+                                    <div class="waves wave-1"></div>
+                                    <div class="waves wave-2"></div>
+                                    <div class="waves wave-3"></div>
+                                </div>
+                            </div>
+                            <!--/ End Video Animation -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+            <!--/ End Hero Area -->
+    </div>
+    <!--/ End Single Slider -->
+</section>
+{% elif request.user.is_recruiter %}
+{% if not request.user.has_company %}
+<div class="alert alert-danger" role="alert">
+    <b>Estás viendo esto porque no has creado ninguna empresa. Crea uno ahora<a href="{% url 'update-company' %}">aqui</a></b>
+</div>
+{% endif %}
+<section class="hero-area">
+    <!-- Single Slider -->
+    <div class="hero-inner">
+        <div class="container">
+            <div class="row"> 
+
+                <div class="col-lg-8 col-12">
+                    <div class="inner-content">
+                        <div class="hero-text">
+                            <h1 class="wow fadeInUp" data-wow-delay=".3s">Bienvenido a AGENCIA U <br>to Make a Better Life
+                            </h1>
+                            <p class="wow fadeInUp" data-wow-delay=".5s">Crear un hermoso sitio web de empleo no es
+                                fácil <br> siempre. Para hacerle la vida más fácil, <br> presentamos la plantilla Jobcamp.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 co-12">
+                    <div class="hero-video-head wow fadeInRight" data-wow-delay=".5s">
+                        <div class="video-inner">
+                            <img src="{% static '/images/hero/hero-image.png' %}" alt="#">
+                            <a href="" class="glightbox hero-video"><i
+                                    class="lni lni-play"></i></a>
+                            <!-- Video Animation -->
+                            <div class="promo-video">
+                                <div class="waves-block">
+                                    <div class="waves wave-1"></div>
+                                    <div class="waves wave-2"></div>
+                                    <div class="waves wave-3"></div>
+                                </div>
+                            </div>
+                            <!--/ End Video Animation -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+            <!--/ End Hero Area -->
+    </div>
+    <!--/ End Single Slider -->
+</section>
+{% endif %}
+
+{% endblock content %}

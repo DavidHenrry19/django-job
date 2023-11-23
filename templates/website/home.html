@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Start Hero Area -->
+    <section class="hero-area">
+        <!-- Single Slider -->
+        <div class="hero-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12">
+                        <div class="inner-content">
+                            <div class="hero-text">
+                                <h1 class="wow fadeInUp" data-wow-delay=".3s">Descubre un mundo de posibilidades<br> y encuentra tu trabajo
+                                </h1>
+                                <p class="wow fadeInUp" data-wow-delay=".5s">Busca facil siempre <br>Para hacer tu vida más fácil<br> 
+                                </p>
+                            </div>
+
+
+                            <div class="job-search-wrap-two mt-50 wow fadeInUp" data-wow-delay=".7s">
+                                <div class="job-search-form">
+                                    <form method="GET">
+                                        <!-- Single Field Item Start  -->
+                                        <div class="single-field-item keyword">
+                                            <label  for="autoSizingInput">Nombre</label>
+                                            {% render_field filter.form.title class="form-control" id="autoSizingInput" placeholder="Plabra clave" %}
+                                        </div>
+                                        <!-- Single Field Item End  -->
+                                        <!-- Single Field Item Start  -->
+                                        <div class="single-field-item location">
+                                            <label  for="autoSizingSelect">Ubicacion</label>
+                                            {% render_field filter.form.state class="form-select" %}
+                                        </div>
+                                        <div class="single-field-item location">
+                                            <label  for="autoSizingSelect">Tipo de trabajo</label>
+                                            {% render_field filter.form.job_type class="form-select" %}
+                                        </div>
+                                        <div class="single-field-item location">
+                                            <label  for="autoSizingSelect">Organizacion</label>
+                                            {% render_field filter.form.industry class="form-select" %}
+                                        </div>
+                                        <!-- Single Field Item End  -->
+                                        <div class="submit-btn">
+                                            <button class="btn" type="submit">Buscar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="trending-keywords mt-30">
+                                    <div class="keywords style-two">
+                                        <span class="title">Palabras mas buscadas:</span>
+                                        <ul>
+                                            <li><a href="#">Negocio</a></li>
+                                            <li><a href="#">Restaurant</a></li>
+                                            <li><a href="#">Cuidador</a></li>
+                                            <li><a href="#">Seguridad</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 co-12">
+                        <div class="hero-video-head wow fadeInRight" data-wow-delay=".5s">
+                            <div class="video-inner">
+                                <img src="{% static '/images/hero/hero-image.png' %}" alt="#">
+                                <a href="" class="glightbox hero-video"><i
+                                        class="lni lni-play"></i></a>
+                                <!-- Video Animation -->
+                                <div class="promo-video">
+                                    <div class="waves-block">
+                                        <div class="waves wave-1"></div>
+                                        <div class="waves wave-2"></div>
+                                        <div class="waves wave-3"></div>
+                                    </div>
+                                </div>
+                                <!--/ End Video Animation -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!--/ End Hero Area -->
+        </div>
+        <!--/ End Single Slider -->
+    </section>
+
+    
+            <!-- Start Breadcrumbs -->
+            <div class="breadcrumbs overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumbs-content">
+                                <h1 class="page-title">Lisa de Trabajos</h1>
+                                <p>Tenemos una gran cantidad de trabajos que espera por ti. <br> Solo busca uno adecuado a ti y aplica al mismo.</p>
+                            </div>
+                            <ul class="breadcrumb-nav">
+                                <li><a href="">Inicio</a></li>
+                                <li><a href="">Blog</a></li>
+                                <li>Lista de trabajos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Breadcrumbs -->
+
+
+    <!-- Start Find Job Area -->
+    <section class="find-job job-list section">
+
+        <div class="container">
+            <div class="single-head">
+                <div class="row">
+                    {% for job in filter.qs %}
+                    <div class="col-lg-6 col-12">
+                        <!-- Single Job -->
+                        <div class="single-job">
+                            <div class="job-image">
+                                <img src="{% static '/images/logo/agencia_logos.png'%}" alt="#" height="60">
+                            </div>
+                            <div class="job-content">
+                                <h4><a href="job-details.html">{{job.title}}</a></h4>
+                                <p>{{job.requirements}}</p>             
+                                <ul>
+                                    <li><i class="lni lni-website"></i><a href="#">{{job.industry}}</a></li>
+                                    <li><i class="lni lni-dollar"></i>{{job.job_type}}</li>
+                                    <li><i class="lni lni-map-marker"></i>Location: {{job.city}}, {{job.state}}</li>
+                                </ul>
+                            </div>
+                            <div class="job-button">
+                                <ul>
+                                    <li><a href="{% url 'job-details' job.pk %}">Ver detalles</a></li>
+                                    <li><span>{{job.salary}} horas</span></li>
+                                </ul>
+                            </div>
+                            <small class="text-muted">{{job.timestamp|naturaltime}}</small>
+                        </div>
+                        <!-- End Single Job -->
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pagination center">
+                            <ul class="pagination-list">
+                                <li><a href="#"><i class="lni lni-arrow-left"></i></a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#"><i class="lni lni-arrow-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Pagination -->
+            </div>
+        </div>
+    </section>
+    <!-- /End Find Job Area -->
+
+{% endblock content %}

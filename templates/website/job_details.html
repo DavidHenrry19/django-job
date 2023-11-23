@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Detalles del trabajo</h1>
+                    <p>El plan de negocios se basa en una amplia gama de conocimientos de diferentes
+                        disciplinas empresariales. <br>Los negocios se basan en una amplia gama de negocios diferentes.
+                        
+                        Hogar Blog Detalles del trabajo.</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="news-standard.html">Blog</a></li>
+                    <li>Detalles del trabajo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Start Job Details -->
+<div class="job-details section">
+    <div class="container">
+        <div class="row mb-n5">
+            <!-- Job List Details Start -->
+            <div class="col-lg-8 col-12">
+                <div class="job-details-inner">
+                    <div class="job-details-head row mx-0">
+                        <div class="company-logo col-auto">
+                            <a href="" style="border-radius: 4px; overflow: hidden;"><img src="{% static 'images/logo/agencia_logos.png' %}"
+                                    alt="Company Logo" width="90"></a>
+                        </div>
+                        <div class="salary-type col-auto order-sm-3">
+                            <span class="salary-range">{{job.job_type}}</span>
+                            <span class="badge badge-success">{{job.salary}} horas</span>
+                        </div>
+                        <div class="content col">
+                            <h5 class="title">{{job.title}}</h5>
+                            <ul class="meta">
+                                <li><strong class="text-primary"><a href="http://www.graygrids.com">{{job.industry}}</a></strong>
+                                </li>
+                                <li><i class="lni lni-map-marker"></i> {{job.city}}, {{job.state}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="job-details-body">
+                        <h6 class="mb-3">Job Description</h6>
+                        <p>{{job.requirements}}</p>
+
+                        <h6 class="mb-3 mt-4">Responsibilities</h6>
+                        <p>
+                            {{job.ideal_candidate}}
+                        </p>
+
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Otros detalles</h5>
+                                        <p class="card-text">Esta es una tarjeta más amplia con texto de apoyo a continuación como introducción natural al contenido adicional.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Ultima actualizacion hace 3 min</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100">
+                        
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sobre la empresa</h5>
+                                        <p class="card-text">{{job.company.name}}</p>
+                                        <p class="card-text">{{job.company.city}}, {{job.company.state}}</p>
+                                        <p class="card-text">{{job.company.est_date}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Ultima actualizacion hace 3 min</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100">
+                        
+                                    <div class="card-body">
+                                        <h5 class="card-title">Trabajos relacionados</h5>
+                                        <p class="card-text">Esta es una tarjeta más amplia con texto de apoyo a continuación como introducción natural al contenido adicional.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Ultima actualizacion hace 3 min</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Job List Details End -->
+            <!-- Job Sidebar Wrap Start -->
+            <div class="col-lg-4 col-12">
+                <div class="job-details-sidebar">
+                    <!-- Sidebar (Apply Buttons) Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <div class="row m-n2 button">
+                                <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
+                                    <a href="{% url 'home' %}" class="d-block btn"><i class="fa fa-heart-o mr-1"></i> Atras</a>
+                                </div>
+                                <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
+                                    {% if user.is_authenticated %}
+                                    {% if has_applied == False %}
+                                    <a href="{% url 'apply-to-job' job.pk %}" class="d-block btn btn-alt">Apply Now</a>
+                                    {% else %}
+                                    <p><span class="text-danger">You have already applied for this job</span></p>
+                                    {% endif %}
+                                    {% else %}
+                                    <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login to Apply</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar (Apply Buttons) End -->
+                    <!-- Sidebar (Job Overview) Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <h6 class="title">Descripcion del trabajo</h6>
+                            <ul class="job-overview list-unstyled">
+                                <li><strong>Publicado en:</strong> {{job.timestamp}}</li>
+                                <li><strong>Vacanate:</strong> 01</li>
+                                <li><strong>Tipo de empleo:</strong> {{job.job_type}}</li>
+                                <li><strong>Ubicacion de trabajo:</strong> {{job.city}}, {{job.state}}</li>
+                                <li><strong>Horas de trabajo:</strong> {{job.salary}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar (Job Overview) End -->
+
+                    <!-- Sidebar (Job Location) Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <h6 class="title">Ubicacion del trabajo</h6>
+                            <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="300" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.7950718262005!2d-70.12658622394906!3d-15.495451315666914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9167f3ece355d9c9%3A0x22eddcf2ea8499c9!2sTupac%20Amaru%20328%2C%20Juliaca%2021104!5e0!3m2!1ses-419!2spe!4v1700709913471!5m2!1ses-419!2spe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.com">123movies old site</a><style>.mapouter{position:relative;text-align:right;height:300px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:100%;}</style><a href="https://maps-google.github.io/embed-google-map/">embed google map</a></div></div>
+                        </div>
+                    </div>
+                    <!-- Sidebar (Job Location) End -->
+                </div>
+            </div>
+            <!-- Job Sidebar Wrap End -->
+
+        </div>
+    </div>
+</div>
+<!-- End Job Details -->
+
+
+{% endblock content %}

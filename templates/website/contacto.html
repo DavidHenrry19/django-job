@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+ <!-- Start Breadcrumbs -->
+
+ <section id="contact-us" class="contact-us section">
+ <div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Contact Us</h1>
+                    <p>Es muy importante que el cliente preste atención al proceso adipiscente.
+                        .</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li>Contactanos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+</section>
+<!-- End Breadcrumbs -->
+<!-- Start Contact Area -->
+    <section id="contact-us" class="contact-us section">
+        <div class="container">
+            <div class="contact-head wow fadeInUp" data-wow-delay=".4s">
+                <div class="row">
+                    <div class="col-lg-7 col-12">
+                        <div class="form-main">
+                            <form class="form" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <input name="name" type="text" placeholder="Tu nombre" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <input name="subject" type="text" placeholder="Tu asunto"
+                                                required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <input name="email" type="email" placeholder="Tu email"
+                                                required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <input name="phone" type="text" placeholder="Tu celular"
+                                                required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group message">
+                                            <textarea name="message" placeholder="Tu mensaje"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group button">
+                                            <button type="submit" class="btn ">Enviar mensaje</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-12">
+                        <div class="single-head">
+                            <div class="contant-inner-title">
+                                <h4>Informacion de contacto</h4>
+                                <p>Si deseas contactarnos, solo escribenos o buscanos por nuestra informacion de nuestra empresa.</p>
+                            </div>
+                            <div class="single-info">
+                                <i class="lni lni-phone"></i>
+                                <ul>
+                                    <li>+51 921 038 164</li>
+                                </ul>
+                            </div>
+                            <div class="single-info">
+                                <i class="lni lni-envelope"></i>
+                                <ul>
+                                    <li><a href="mailto:info@yourwebsite.com">agenciau@gmail.com</a></li>
+                                </ul>
+                            </div>
+                            <div class="single-info">
+                                <i class="lni lni-map"></i>
+                                <ul>
+                                    <li>Juliaca, Pierola con JR Tupak Amaru N 328</li>
+                                </ul>
+                            </div>
+                            <div class="contact-social">
+                                <h5>Follow Us on</h5>
+                                <ul>
+                                    <li><a href="#"><i class="lni lni-facebook-original mt-3"></i></a></li>
+                                    <li><a href="#"><i class="lni lni-twitter-original mt-3"></i></a></li>
+                                    <li><a href="#"><i class="lni lni-linkedin-original mt-3"></i></a></li>
+                                    <li><a href="#"><i class="lni lni-pinterest mt-3"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start Google-map Area -->
+        <div class="map-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="map-container">
+                            <div class="mapouter">
+                                <div class="gmap_canvas"><iframe width="100%" height="400" id="gmap_canvas"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.7950718262005!2d-70.12658622394906!3d-15.495451315666914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9167f3ece355d9c9%3A0x22eddcf2ea8499c9!2sTupac%20Amaru%20328%2C%20Juliaca%2021104!5e0!3m2!1ses-419!2spe!4v1700709913471!5m2!1ses-419!2spe"
+                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                        href="https://123movies-to.com">123movies old site</a>
+            
+                                    <style>
+                                        
+                                        
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 400px;
+                                            width: 100%;
+                                        }
+
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 400px;
+                                            width: 100%;
+                                        }
+                                    </style><a href="https://maps-google.github.io/embed-google-map/">embed google
+                                        map</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Google-map Area -->
+    </section>
+    <!--/ End Contact Area -->
+
+
+{% endblock %}
